@@ -1,0 +1,28 @@
+{{#each this}}
+<li class="photo-card">
+    <img src="{{webformatURL}}" alt="{{tags}}" width="320" />
+
+    <div class="stats">
+        <p class="stats-item">
+            <i class="material-icons">thumb_up</i>
+            Лайков:
+            {{likes}}
+        </p>
+        <p class="stats-item">
+            <i class="material-icons">visibility</i>
+            Просмотров:
+            {{views}}
+        </p>
+        <p class="stats-item">
+            <i class="material-icons">comment</i>
+            Коментариев:
+            {{comments}}
+        </p>
+        <p class="stats-item">
+            <i class="material-icons">cloud_download</i>
+            Скачиваний:
+            {{downloads}}
+        </p>
+    </div>
+</li>
+{{/each}}
