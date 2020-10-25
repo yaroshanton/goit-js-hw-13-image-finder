@@ -1,27 +1,44 @@
 import './styles.scss';
+import refs from './js/refs'
 import lodash from "lodash";
 import apiService from './js/apiService'
-import refs from './js/refs'
 import creatingPhotosMarkup from './js/creatingPhotosMarkup'
 
-let query = '';
+
 
 function onInputQuery(e) {
     e.preventDefault();
 
+    clearListItem();
+
     const searchQuery = e.target.value;
 
-    query = searchQuery;
+    apiService.searchQuerry = searchQuery;
 
-    apiService.fetchPhoto(searchQuery).then(articles => {
-        creatingPhotosMarkup(articles)
+    apiService.resetPage();
+
+    apiService.fetchPhoto().then(creatingPhotosMarkup);
+
+
+    e.target.value = '';
+}
+
+function onButtonLoad(e) {
+
+    let scrollWindowData = window.scrollY;
+
+    apiService.fetchPhoto().then(data => {
+        creatingPhotosMarkup(data);
+        window.scrollTo(0, scrollWindowData);
+        window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth',
+        });
     });
 }
 
-function onButtonLoad() {
-    apiService.fetchPhoto(query).then(articles => {
-        creatingPhotosMarkup(articles)
-    });
+function clearListItem() {
+    refs.gallery.innerHTML = '';
 }
 
 refs.form.addEventListener('input', lodash.debounce(onInputQuery, 1000))
