@@ -1,8 +1,8 @@
 import refs from './refs'
 import createArticle from '../templates/createArticle.hbs'
 
-function creatingPhotosMarkup(data) {
-    const markup = createArticle(data)
+function creatingPhotosMarkup(articles) {
+    const markup = createArticle(articles)
 
     refs.gallery.insertAdjacentHTML('beforeend', markup)
 }
