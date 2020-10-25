@@ -15,11 +15,20 @@ body {
 
 }
 
-.stats-item {
+.gallery {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 25px;
+  justify-content: space-between;
+  list-style: none;
 }
+
+.photo-card img {
+  height: 213px;
+}
+
 
 .material-icons {
   padding-right: 8px;
+  vertical-align: middle;
 }
