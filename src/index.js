@@ -19,7 +19,6 @@ function onInputQuery(e) {
 
     apiService.fetchPhoto().then(creatingPhotosMarkup);
 
-
     e.target.value = '';
 }
 
